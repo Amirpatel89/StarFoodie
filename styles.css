@@ -1,0 +1,165 @@
+#map{
+    height: 1000px;
+    /*display: none;*/
+    /*visibility: hidden;*/
+    
+}
+#bgvid{
+    height: 100%;
+    padding: 0;
+    background-size: cover;
+}
+#follow{
+    height: 100vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+#things{
+    position: relative;
+}
+
+.overlay-diamond{
+    max-height: 420px;
+    max-width: 420px;
+    background: rgba(0,0,0,0.5);
+    height: 100vw;
+    position: absolute;
+    transform: translate(-50%,-50%) rotate(-45deg);
+    width: 100vw;
+    z-index: 0;
+}
+.overlay-content{
+    margin: 0 auto;
+    max-width: 280px;
+    text-align: center;
+    /*width: 17vw;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    transform: rotate(45deg)
+}
+.slogan{
+    color: white;
+}
+.logo{
+    color: white;
+}
+.logo-diamond{
+    color: #FBAC3D;
+}
+
+.my-list{
+    padding: 15px;
+    list-style-type: none;
+}
+footer{
+    right: 0;
+/*     top: auto; */
+    bottom: 0;
+    left: 0;
+    /*position: fixed;*/
+    width: 100%;
+    background-color: rgba(0,0,0,0.9);
+    padding: 0;
+    z-index: 0;
+    margin-top: -5px;
+
+}
+.footer-tags{
+    color: white;
+}
+.footer-tags:visited{
+    color: white;
+}
+.footer-tags:hover{ 
+    color: #FBAC3D;
+}
+.footer-tags:active{
+    color: #FBAC3D;
+}
+
+ul > li{
+    color: white;
+    font-size: 110%;
+    text-align: left;
+    display: inline-block;
+    font-style: oblique;
+}
+p{
+    color: white;
+    font-style: oblique;
+    text-align: center;
+}
+.modal-body>p{
+    color: red;
+}
+
+.name-of-restaurant{
+    color: gold;
+}
+
+.rating-of-restaurant{
+    color: gold;
+}
+.photo-of-restaurant{
+    height: 200px;
+    width: 100%;
+    color:  gold;   
+}
+.review-of-restaurant{
+    color:  #FBAC3D;
+    background-color: #FBAC3D;
+    text-align: center;
+}
+.please-enable{
+    color: #FBAC3D;
+}
+.review-header{
+    color:  #FBAC3D;
+    background-color: black;
+    text-align: center;
+    font-size: 44px;
+}
+#map2{
+    height: 500px;
+}
+#floating-panel{
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    bottom: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30;
+    padding-left: 10px;
+}
+.review-of-restaurant{
+    color: #FBAC3D;
+    background-color:  black;
+    text-align: center;
+}
+#map2{
+    height:  400px; 
+}
+
+#floating-panel {
+position: absolute;
+top: 10px;
+left: 25%;
+z-index: 5;
+background-color: #fff;
+padding: 5px;
+border: 1px solid #999;
+text-align: center;
+font-family: 'Roboto','sans-serif';
+line-height: 30px;
+padding-left: 10px;
+}
+/* @media screen and (max-width: 768px) {
+    #bgvid{
+        background-size:  auto;
+    }
+} */

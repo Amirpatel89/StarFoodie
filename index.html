@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>THE ST&#x2605R FOODIE</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="styles.css">
+  <!-- jQuery  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- google maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtqWrXYroKEJA-TxgqRjLZzGsTa4bsRLk&callback=getWhere&libraries=geometry,places"
+ async defer></script>
+
+<!-- &callback=findPlaces -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- BOOTSTRAP JS ^ -->
+<!-- custom JS -->
+<script type="text/javascript" src="scripts.js"></script>
+<script src="">="https://maps.googleapis.com/maps/api/place/details/json?placeid=" + `${thisRest.place_id}` + "&key=AIzaSyCtqWrXYroKEJA-TxgqRjLZzGsTa4bsRLk&libraries=places"</script>
+
+
+
+
+</head>
+<body>
+  <video autoplay preload="auto" loop id="bgvid">
+        <source src="http://centraarchy.com/new-york-prime/wp-content/uploads/sites/3/2016/09/New-York-Prime.mp4" type="video/mp4">
+  </video>
+<div id= "follow">
+    <div class="text-center overlay-diamond col-xs-12">
+      <div class="overlay-content content">
+        <div class="logo"><h2>THE ST<span class="logo-diamond">&#x2605</span>R FOODIE</h2></div>
+        <div class="slogan">Where Restaurant Stars Matter</div>
+        <div class="item-list">  
+          <div class="my-list"><li class="btn btn-warning btn-block get-directions" data-toggle="modal" data-target="#myModal" onclick="initMap2()">Get Directions</li></div>
+          <div class="please-enable">Please allow your browser to access your location</div>
+          <div class="my-list"><li class="go-to-next"><a href="#" class="btn btn-warning btn-block" onclick="showRest()">Next Restaurant</a></li></div>
+        <div id="things">
+          <div class="name-of-restaurant">
+          </div>
+          <div class="rating-of-restaurant">
+          </div>
+          <div class="photo-of-restaurant">
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+      </div>
+    </div>
+<div>
+  <div class="review-header col-xs-12">Review</div>
+  <div class="review-of-restaurant col-xs-12"></div>
+</div>
+
+<!-- The Center Diamond and Content ^ -->
+    <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Fastest Directions</h4>
+        </div>
+        <div class="modal-body">  
+              <div id="floating-panel">
+                <b>Start: </b>
+                <select id="start">
+                  <option>Your Location</option>
+                </select>
+                <b>End: </b>
+                <select id="end">
+                  <option value=`${globalThisLocation[0]}`>Your Location</option>
+                  <option value="">Your Restaurant</option>
+                </select>
+              </div>
+        <div id="map2">
+                  
+        </div>
+        </div>
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<div id="map" class="col-xs-12"></div>
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center item-list-footer">
+          <ul class="footer-logos">
+            <li class="my-list"><a href="#" class="footer-tags">THE ST<span class="logo-diamond">&#x2605</span>R FOODIE ENTERTAINMENT</a></li>
+            <li class="my-list"><a href="#" class="footer-tags">THE ST<span class="logo-diamond">&#x2605</span>R FOODIE ADVERTISING</a></li>
+            <li class="my-list"><a href="#" class="footer-tags">THE ST<span class="logo-diamond">&#x2605</span>R FOODIE MEMBERS</a></li>
+            <li class="my-list"><a href="#" class="footer-tags">THE ST<span class="logo-diamond">&#x2605</span>R FOODIE SERVICES</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-text">
+    <p><!-- About us -->
+    On the star foodie we help you find the best dining experience in your area by cross checking the best food reviews to make sure that only the best resurants that pay close attention to detail and excellent customer service are availible for your selection.</p></div>
+</footer>
+
+
+</body>
+</html>
