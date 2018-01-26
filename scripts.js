@@ -6,6 +6,7 @@
   var globalThisLocation = [];
   var map2;
   var globalEndpoint = [];
+  var globalEndpointLatLng = [];
   
 
 $(document).ready(function() {
@@ -17,10 +18,7 @@ function getWhere(){
       navigator.geolocation.getCurrentPosition(function(position) {
       // console.log(`lat: ${position.coords.latitude} lng: ${position.coords.longitude}`);
       var thisLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
-      console.log(thisLocation);
-      console.log(position);
-      // var defaultLocation = {lat: 36.169941, lng: -115.139830};
-      // console.log(defaultLocation);
+      var defaultLocation = {lat: 36.169941, lng: -115.139830};
       initMap(thisLocation);
       globalThisLocation.push(thisLocation);
       $(".please-enable").hide();
@@ -105,6 +103,7 @@ function callback(results, status) {
             $('.name-of-restaurant').html(`${globalThisRest[0].name}`);
             $('.rating-of-restaurant').html(`Rating: ${globalThisRest[0].rating} Stars`);
             $(".review-header").show();
+            console.log(globalThisRest[0].geometry.location.lat())
 
 
          
@@ -118,7 +117,13 @@ function callback(results, status) {
                     $('.review-of-restaurant').html(reviewCaption);
                     console.log(place);
                     globalEndpoint.push(globalThisRest);
-                    console.log(globalEndpoint[0]);
+                    console.log(globalEndpoint[globalEndpoint.length -1][0].geometry.location.lng());
+                    var endLat = globalEndpoint[globalEndpoint.length -1][0].geometry.location.lat();
+                    var endLng = globalEndpoint[globalEndpoint.length -1][0].geometry.location.lng();
+                    var endLatLng = `{lat: ${endLat}, lng: ${endLng}} `
+                    console.log(endLatLng)
+                    
+                    globalEndpointLatLng.push(endLatLng)
 
 
 
@@ -149,7 +154,7 @@ function createMarker(place) {
     position: place.geometry.location
   });
   var image = 'https://i.imgur.com/FRSwoOV.gif'
-  
+  console.log(globalThisLocation[0])
   var marker = new google.maps.Marker({
   map: map,
   position: globalThisLocation[0],
@@ -171,42 +176,37 @@ function createMarker(place) {
 
 
 
-// function initMap2() {
-//         var directionsService = new google.maps.DirectionsService;
-//         var directionsDisplay = new google.maps.DirectionsRenderer;
-//         var map2 = new google.maps.Map(document.getElementById('map2'), {
-//           zoom: 7,
-//           center: globalThisLocation[0]
-//         });
-//         directionsDisplay.setMap(map2);
 
-//         var onChangeHandler = function() {
-//           calculateAndDisplayRoute(directionsService, directionsDisplay);
-//         };
-//         document.getElementById('start').addEventListener('change', onChangeHandler);
-//         document.getElementById('end').addEventListener('change', onChangeHandler);
-//       }
+function initMap2() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map2 = new google.maps.Map(document.getElementById('map2'), {
+          zoom: 7,
+          center: globalThisLocation[0]
+        });
+        directionsDisplay.setMap(map2);
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        document.getElementById('start').addEventListener('change', onChangeHandler);
+        document.getElementById('end').addEventListener('change', onChangeHandler);
+      }
 
-//       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-//         directionsService.route({
-//           origin: globalThisLocation[0],
-//           destination: {
-//           globalEndpoint[0].geometry.location,lat(),
-//           globalEndpoint[0].geometry.location,lng(),
-//         }
-//           travelMode: 'DRIVING'
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: globalThisLocation[0],
+          destination: globalEndpointLatLng,
+          travelMode: 'DRIVING'
 
-//         }, function(response, status) {
-//           if (status === 'OK') {
-//             directionsDisplay.setDirections(response);
-//           } else {
-//             window.alert('Directions request failed due to ' + status);
-//           }
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
 
-//         });
-//       }
-
-
+        });
+      }
 
 
 
