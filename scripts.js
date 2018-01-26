@@ -89,7 +89,7 @@ function callback(results, status) {
               var thisRest = (sortedArray[counter]);
               // console.log(thisRest);
               globalThisRest.push(thisRest);
-              console.log(globalThisRest[0]);
+              // console.log(globalThisRest[0]);
               globalCounter.push(counter);
 
             // $('.go-back').click(function(){
@@ -103,7 +103,7 @@ function callback(results, status) {
             $('.name-of-restaurant').html(`${globalThisRest[0].name}`);
             $('.rating-of-restaurant').html(`Rating: ${globalThisRest[0].rating} Stars`);
             $(".review-header").show();
-            console.log(globalThisRest[0].geometry.location.lat())
+            // console.log(globalThisRest[0].geometry.location.lat())
 
 
          
@@ -116,14 +116,18 @@ function callback(results, status) {
                     var reviewCaption = place.reviews[0].text;
                     $('.review-of-restaurant').html(reviewCaption);
                     console.log(place);
+                    var endObject = {}
                     globalEndpoint.push(globalThisRest);
                     console.log(globalEndpoint[globalEndpoint.length -1][0].geometry.location.lng());
                     var endLat = globalEndpoint[globalEndpoint.length -1][0].geometry.location.lat();
                     var endLng = globalEndpoint[globalEndpoint.length -1][0].geometry.location.lng();
-                    var endLatLng = `{lat: ${endLat}, lng: ${endLng}} `
-                    console.log(endLatLng)
+                    endObject.lat = endLat;
+                    endObject.lng = endLng;
+                    console.log(endObject)
                     
-                    globalEndpointLatLng.push(endLatLng)
+                    
+                    globalEndpointLatLng.push(endObject)
+                    console.log(globalEndpointLatLng)
 
 
 
@@ -153,8 +157,7 @@ function createMarker(place) {
     map: map,
     position: place.geometry.location
   });
-  var image = 'https://i.imgur.com/FRSwoOV.gif'
-  console.log(globalThisLocation[0])
+  var image = 'https://i.imgur.com/FRSwoOV.gif';
   var marker = new google.maps.Marker({
   map: map,
   position: globalThisLocation[0],
@@ -195,7 +198,7 @@ function initMap2() {
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
           origin: globalThisLocation[0],
-          destination: globalEndpointLatLng,
+          destination: globalEndpointLatLng[globalEndpointLatLng.length -1],
           travelMode: 'DRIVING'
 
         }, function(response, status) {
