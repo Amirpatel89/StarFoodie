@@ -7,13 +7,10 @@
   var map2;
   var globalEndpoint = [];
   var globalEndpointLatLng = [];
-  
-
 $(document).ready(function() {
     $(".go-to-next").hide();
     $(".review-header").hide();
 });
-
 function getWhere(){
       navigator.geolocation.getCurrentPosition(function(position) {
       // console.log(`lat: ${position.coords.latitude} lng: ${position.coords.longitude}`);
@@ -22,29 +19,11 @@ function getWhere(){
       initMap(thisLocation);
       globalThisLocation.push(thisLocation);
       $(".please-enable").hide();
-      $(".go-to-next").show();
-
-
-
-
-      // initMap(thisLocation);
-
-     
-    
+      $(".go-to-next").show();    
   },
-
-
   );
 }
-
-// }
-
-
-
 function initMap(location) {
-          // var location = {where};   
-          // lat: 33.8485720, lng: -84.3735560
-
   map = new google.maps.Map(document.getElementById('map'), {
     center: location,
     zoom: 11
@@ -57,8 +36,6 @@ function initMap(location) {
     radius: 50000,
     type: ['restaurant'],
   }, callback);
-
-
 }
 
 function callback(results, status) {
@@ -77,7 +54,6 @@ function callback(results, status) {
 })
     sorted = reverseSorted.reverse();
     console.log(sorted);
-
 }
     function showRest () {
             var sortedArray = sorted
@@ -87,26 +63,12 @@ function callback(results, status) {
             $('.go-to-next').click(function(){
               counter = (counter + 1) % sortedArray.length
               var thisRest = (sortedArray[counter]);
-              // console.log(thisRest);
               globalThisRest.push(thisRest);
-              // console.log(globalThisRest[0]);
               globalCounter.push(counter);
-
-            // $('.go-back').click(function(){
-            //   counter2 = (globalCounter[0] - 1) % sortedArray.length
-            //   var newRest = (sortedArray[counter2]);
-            //   // console.log(newRest);
-            //   globalThisRest.push(newRest);
-            //   console.log(globalThisRest[0]);
-            // });
 
             $('.name-of-restaurant').html(`${globalThisRest[0].name}`);
             $('.rating-of-restaurant').html(`Rating: ${globalThisRest[0].rating} Stars`);
             $(".review-header").show();
-            // console.log(globalThisRest[0].geometry.location.lat())
-
-
-         
             var service = new google.maps.places.PlacesService(map);
                 service.getDetails({placeId: `${thisRest.place_id}`}, function(place, status) {
                    if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -122,35 +84,14 @@ function callback(results, status) {
                     var endLat = globalEndpoint[globalEndpoint.length -1][0].geometry.location.lat();
                     var endLng = globalEndpoint[globalEndpoint.length -1][0].geometry.location.lng();
                     endObject.lat = endLat;
-                    endObject.lng = endLng;
-                    console.log(endObject)
-                    
-                    
+                    endObject.lng = endLng;                  
                     globalEndpointLatLng.push(endObject)
                     console.log(globalEndpointLatLng)
-
-
-
                     };
-
-
-
-
             });
 
-        });
-                
+        });               
 };
-
-                 
-
-
-               
-
-              
-
-
-
 function createMarker(place) {
   var placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
@@ -165,21 +106,13 @@ function createMarker(place) {
   animation: google.maps.Animation.DROP,
   draggable: false,
   optimized:false 
-
-   
   });
-
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.setContent(globalThisLocation[0]);
     infowindow.open(map, this);
-
   });
 }
-
-
-
-
 function initMap2() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -188,13 +121,13 @@ function initMap2() {
           center: globalThisLocation[0]
         });
         directionsDisplay.setMap(map2);
+        directionsDisplay.setPanel(document.getElementById('right-panel'));
         var onChangeHandler = function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
         document.getElementById('start').addEventListener('change', onChangeHandler);
         document.getElementById('end').addEventListener('change', onChangeHandler);
       }
-
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
           origin: globalThisLocation[0],
@@ -207,7 +140,6 @@ function initMap2() {
           } else {
             window.alert('Directions request failed due to ' + status);
           }
-
         });
       }
 
