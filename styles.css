@@ -178,13 +178,18 @@ height: 100%;
 width: 390px;
 overflow: auto;
 }
-@media screen and (max-width: 768px) {{
-    #map2 {
+@media only screen and (max-height: 768px){
+    #map2{
       height: 500px;
       margin: 0;
     }
-    #right-panel {
+    #right-panel{
       float: none;
       width: auto;
+    }
+}
+@media only screen and (max-width: 400px){
+    .overlay-content{
+        margin-left:  -20px;
     }
 }

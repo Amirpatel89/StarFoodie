@@ -19,7 +19,7 @@ function getWhere(){
       initMap(thisLocation);
       globalThisLocation.push(thisLocation);
       $(".please-enable").hide();
-      $(".go-to-next").show();    
+      $(".go-to-next").delay(1000).show(0);    
   },
   );
 }
