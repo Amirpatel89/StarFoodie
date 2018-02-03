@@ -1,6 +1,9 @@
 #map{
     height: 1000px;
 }
+body{
+    background-color:  black;
+}
 #bgvid{
     height: 100vh;
     padding: 0;
